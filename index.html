@@ -21,18 +21,18 @@
         }
 
         :root {
-            --color-bg: #F8FAF7;
+            --color-bg: #F2F7FB;
             --color-surface: #FFFFFF;
-            --color-text: #1A2E1A;
-            --color-text-secondary: #5A6B5A;
-            --color-accent: #2E7D32;
-            --color-accent-dark: #1B5E20;
-            --color-accent-light: #E8F5E9;
-            --color-accent-warm: #4CAF50;
-            --color-warm: #FFF8E1;
-            --color-warm-accent: #F9A825;
-            --color-border: #D7E2D7;
-            --color-hero-overlay: rgba(27, 94, 32, 0.75);
+            --color-text: #1A2A3A;
+            --color-text-secondary: #5A6E80;
+            --color-accent: #3D7A9E;
+            --color-accent-dark: #2A5F7E;
+            --color-accent-light: #BED2E3;
+            --color-accent-warm: #5A9ABF;
+            --color-warm: #E8F0F6;
+            --color-warm-accent: #3D7A9E;
+            --color-border: #BED2E3;
+            --color-hero-overlay: rgba(42, 95, 126, 0.78);
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-serif: 'Merriweather', Georgia, serif;
             --max-width: 1140px;
@@ -74,6 +74,7 @@
             text-decoration: none;
         }
         .nav-logo svg { width: 36px; height: 36px; }
+        .nav-logo svg rect { fill: #3D7A9E; }
         .nav-links { display: flex; gap: 32px; list-style: none; }
         .nav-links a {
             text-decoration: none; color: var(--color-text-secondary);
@@ -102,7 +103,7 @@
         }
         .hero-bg::after {
             content: ''; position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(27, 94, 32, 0.82), rgba(46, 125, 50, 0.7));
+            background: linear-gradient(135deg, rgba(42, 95, 126, 0.82), rgba(61, 122, 158, 0.72));
         }
         .hero-content {
             position: relative; z-index: 1; color: #fff;
@@ -179,7 +180,7 @@
             box-shadow: var(--shadow-lg); position: relative;
         }
         .about-image img {
-            width: 100%; height: 480px; object-fit: cover; object-position: center top; display: block;
+            width: 100%; aspect-ratio: 896 / 1152; object-fit: cover; object-position: center top; display: block;
         }
         .about-image-badge {
             position: absolute; bottom: 20px; left: 20px;
@@ -232,7 +233,7 @@
         .pricing { background: var(--color-surface); }
         .pricing-card {
             max-width: 680px; margin: 0 auto;
-            background: linear-gradient(135deg, var(--color-accent-light), #fff);
+            background: linear-gradient(135deg, #dbe8f0, #fff);
             border-radius: var(--radius); padding: 48px;
             border: 2px solid var(--color-accent);
             box-shadow: var(--shadow-lg); text-align: center;
@@ -275,7 +276,7 @@
 
         /* ===== CTA ===== */
         .cta {
-            background: linear-gradient(135deg, var(--color-accent-dark), var(--color-accent));
+            background: linear-gradient(135deg, #2A5F7E, #3D7A9E);
             color: #fff; text-align: center; padding: 100px 0;
         }
         .cta h2 {
@@ -289,7 +290,7 @@
 
         /* ===== FOOTER ===== */
         footer {
-            background: #1A2E1A; color: rgba(255,255,255,0.7); padding: 64px 0 32px;
+            background: #1A2A3A; color: rgba(255,255,255,0.7); padding: 64px 0 32px;
         }
         .footer-grid {
             display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px;
