@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum – Technikdoktor</title>
+    <meta name="description" content="Impressum von Technikdoktor – LinguaFlow e.U., Christian Nouza, IT-Hausbesuchservice in Oberösterreich.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-bg: #F8FAF7; --color-surface: #FFFFFF; --color-text: #1A2E1A;
+            --color-text-secondary: #5A6B5A; --color-accent: #2E7D32;
+            --color-accent-dark: #1B5E20; --color-accent-light: #E8F5E9;
+            --color-border: #D7E2D7;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Merriweather', Georgia, serif;
+            --max-width: 800px; --radius: 16px;
+            --shadow: 0 2px 20px rgba(0,0,0,0.06);
+        }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+        nav { background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--color-border); padding: 0; position: sticky; top: 0; z-index: 100; }
+        nav .nav-inner { max-width: 1140px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+        .nav-logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-serif); font-weight: 700; font-size: 1.25rem; color: var(--color-accent-dark); text-decoration: none; }
+        .nav-logo svg { width: 36px; height: 36px; }
+        .nav-back { display: flex; align-items: center; gap: 6px; color: var(--color-text-secondary); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: 0.3s ease; }
+        .nav-back:hover { color: var(--color-accent); }
+        .nav-back svg { width: 18px; height: 18px; }
+
+        .page-header { padding: 80px 0 48px; text-align: center; }
+        .page-header h1 { font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 12px; }
+        .page-header p { color: var(--color-text-secondary); font-size: 1.05rem; }
+
+        .content-card { background: var(--color-surface); border-radius: var(--radius); padding: 48px; box-shadow: var(--shadow); margin-bottom: 64px; border: 1px solid var(--color-border); }
+        .content-card h2 { font-size: 1.2rem; color: var(--color-accent-dark); margin: 32px 0 12px; font-weight: 600; }
+        .content-card h2:first-child { margin-top: 0; }
+        .content-card p { color: var(--color-text-secondary); margin-bottom: 12px; }
+        .content-card a { color: var(--color-accent); text-decoration: none; }
+        .content-card a:hover { text-decoration: underline; }
+
+        .info-grid { display: grid; grid-template-columns: 140px 1fr; gap: 8px 16px; margin: 16px 0; }
+        .info-label { font-weight: 600; color: var(--color-text); font-size: 0.93rem; }
+        .info-value { color: var(--color-text-secondary); font-size: 0.93rem; }
+
+        footer { text-align: center; padding: 32px 0; color: var(--color-text-secondary); font-size: 0.85rem; border-top: 1px solid var(--color-border); }
+        footer a { color: var(--color-accent); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .content-card { padding: 28px 20px; }
+            .info-grid { grid-template-columns: 1fr; gap: 4px; }
+            .info-label { margin-top: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="#2E7D32"/><path d="M10 18.5C10 14 13.5 10 18 10s8 4 8 8.5c0 3-1.5 5.5-4 7v2.5a1 1 0 01-1 1h-6a1 1 0 01-1-1v-2.5c-2.5-1.5-4-4-4-7z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 29h6M16 10V8M20 10V8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="18" r="2" fill="#fff"/></svg>
+            Technikdoktor
+        </a>
+        <a href="index.html" class="nav-back">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M15 19l-7-7 7-7"/></svg>
+            Zurück zur Startseite
+        </a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="page-header">
+        <h1>Impressum</h1>
+        <p>Angaben gemäß § 5 ECG und § 25 MedienG</p>
+    </div>
+
+    <div class="content-card">
+        <h2>Unternehmensangaben</h2>
+        <div class="info-grid">
+            <span class="info-label">Firma</span>
+            <span class="info-value">LinguaFlow e.U. – Technikdoktor</span>
+            <span class="info-label">Inhaber</span>
+            <span class="info-value">Christian Nouza</span>
+            <span class="info-label">Adresse</span>
+            <span class="info-value">Linzer Straße 17, 4100 Ottensheim, Österreich</span>
+        </div>
+
+        <h2>Kontakt</h2>
+        <div class="info-grid">
+            <span class="info-label">Telefon</span>
+            <span class="info-value"><a href="tel:+4368110580336">+43 681 10580336</a></span>
+            <span class="info-label">E-Mail</span>
+            <span class="info-value"><a href="mailto:hilfe@technikdoktor.at">hilfe@technikdoktor.at</a></span>
+        </div>
+
+        <h2>Registrierung</h2>
+        <div class="info-grid">
+            <span class="info-label">Firmenbuch-Nr.</span>
+            <span class="info-value">FN 651220b</span>
+            <span class="info-label">Firmenbuchgericht</span>
+            <span class="info-value">Landesgericht Linz</span>
+            <span class="info-label">UID-Nummer</span>
+            <span class="info-value">ATU81988814</span>
+        </div>
+
+        <h2>Kammerzugehörigkeit</h2>
+        <p>Mitglied der Wirtschaftskammer Oberösterreich, Fachgruppe IT-Dienstleistungen.</p>
+
+        <h2>Gewerbebehörde</h2>
+        <p>Bezirkshauptmannschaft Urfahr-Umgebung</p>
+        <p>Anwendbare Gewerbeordnung: <a href="https://www.ris.bka.gv.at" target="_blank" rel="noopener">www.ris.bka.gv.at</a></p>
+
+        <h2>Streitschlichtung</h2>
+        <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/odr" target="_blank" rel="noopener">ec.europa.eu/odr</a></p>
+        <p>Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 LinguaFlow e.U. – Technikdoktor &middot; <a href="agb.html">AGB</a> &middot; <a href="datenschutz.html">Datenschutz</a></p>
+    </div>
+</footer>
+
+</body>
+</html>

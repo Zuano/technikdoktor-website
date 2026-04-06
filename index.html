@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technikdoktor – Ihr Hausbesuch für Computer, Handy & Co</title>
+    <meta name="description" content="Technikdoktor – Seit 1998 Ihr mobiler IT-Hausbesuchservice in Oberösterreich. Computer, Handy, Netzwerk & mehr – persönlich, verständlich, zuverlässig.">
+    <meta name="author" content="Christian Nouza">
+    <meta property="og:title" content="Technikdoktor – Ihr Hausbesuch für Computer, Handy & Co">
+    <meta property="og:description" content="Seit 1998 Ihr mobiler IT-Hausbesuchservice in Oberösterreich. Persönlich, verständlich, zuverlässig.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_AT">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-bg: #F8FAF7;
+            --color-surface: #FFFFFF;
+            --color-text: #1A2E1A;
+            --color-text-secondary: #5A6B5A;
+            --color-accent: #2E7D32;
+            --color-accent-dark: #1B5E20;
+            --color-accent-light: #E8F5E9;
+            --color-accent-warm: #4CAF50;
+            --color-warm: #FFF8E1;
+            --color-warm-accent: #F9A825;
+            --color-border: #D7E2D7;
+            --color-hero-overlay: rgba(27, 94, 32, 0.75);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Merriweather', Georgia, serif;
+            --max-width: 1140px;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --shadow: 0 2px 20px rgba(0,0,0,0.06);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.1);
+            --transition: 0.3s ease;
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-border);
+            transition: var(--transition);
+        }
+        nav .container {
+            display: flex; align-items: center; justify-content: space-between;
+            height: 72px;
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: 10px;
+            font-family: var(--font-serif); font-weight: 700;
+            font-size: 1.25rem; color: var(--color-accent-dark);
+            text-decoration: none;
+        }
+        .nav-logo svg { width: 36px; height: 36px; }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a {
+            text-decoration: none; color: var(--color-text-secondary);
+            font-size: 0.95rem; font-weight: 500;
+            transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--color-accent); }
+        .nav-cta {
+            background: var(--color-accent); color: #fff !important;
+            padding: 10px 24px; border-radius: 50px; font-weight: 600;
+            transition: var(--transition);
+        }
+        .nav-cta:hover { background: var(--color-accent-dark); }
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; }
+        .mobile-toggle svg { width: 28px; height: 28px; color: var(--color-text); }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative; min-height: 92vh;
+            display: flex; align-items: center;
+            overflow: hidden; margin-top: 72px;
+        }
+        .hero-bg {
+            position: absolute; inset: 0; z-index: 0;
+            background: url('https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=1400&q=80') center/cover no-repeat;
+        }
+        .hero-bg::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(27, 94, 32, 0.82), rgba(46, 125, 50, 0.7));
+        }
+        .hero-content {
+            position: relative; z-index: 1; color: #fff;
+            max-width: 680px; padding: 80px 0;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,0.18); backdrop-filter: blur(10px);
+            padding: 8px 18px; border-radius: 50px;
+            font-size: 0.85rem; font-weight: 500;
+            margin-bottom: 28px;
+        }
+        .hero h1 {
+            font-family: var(--font-serif); font-size: clamp(2.2rem, 5vw, 3.4rem);
+            line-height: 1.2; margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.15rem; opacity: 0.92; line-height: 1.8;
+            margin-bottom: 36px; max-width: 560px;
+        }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 14px 32px; border-radius: 50px; font-weight: 600;
+            font-size: 1rem; text-decoration: none; transition: var(--transition);
+            cursor: pointer; border: none;
+        }
+        .btn-primary { background: #fff; color: var(--color-accent-dark); }
+        .btn-primary:hover { background: var(--color-accent-light); transform: translateY(-2px); }
+        .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); }
+        .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+        .btn-green { background: var(--color-accent); color: #fff; }
+        .btn-green:hover { background: var(--color-accent-dark); transform: translateY(-2px); }
+
+        /* ===== TRUST BAR ===== */
+        .trust-bar {
+            background: var(--color-surface); border-bottom: 1px solid var(--color-border);
+            padding: 32px 0;
+        }
+        .trust-items {
+            display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex; align-items: center; gap: 12px;
+            color: var(--color-text-secondary); font-weight: 500; font-size: 0.95rem;
+        }
+        .trust-item svg { width: 24px; height: 24px; color: var(--color-accent); flex-shrink: 0; }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 100px 0; }
+        .section-label {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--color-accent); font-weight: 600; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            color: var(--color-text); line-height: 1.3; margin-bottom: 16px;
+        }
+        .section-subtitle {
+            color: var(--color-text-secondary); font-size: 1.1rem;
+            max-width: 600px; line-height: 1.7;
+        }
+        .section-header { text-align: center; margin-bottom: 64px; }
+        .section-header .section-subtitle { margin: 0 auto; }
+
+        /* ===== ABOUT ===== */
+        .about { background: var(--color-surface); }
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+        }
+        .about-image {
+            border-radius: var(--radius); overflow: hidden;
+            box-shadow: var(--shadow-lg); position: relative;
+        }
+        .about-image img {
+            width: 100%; height: 480px; object-fit: cover; object-position: center top; display: block;
+        }
+        .about-image-badge {
+            position: absolute; bottom: 20px; left: 20px;
+            background: var(--color-accent); color: #fff;
+            padding: 10px 20px; border-radius: var(--radius-sm);
+            font-weight: 700; font-size: 1.1rem;
+        }
+        .about-text .section-subtitle { max-width: none; margin-bottom: 28px; }
+        .about-features {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+        }
+        .about-feature {
+            display: flex; align-items: flex-start; gap: 10px;
+            font-size: 0.95rem; color: var(--color-text);
+        }
+        .about-feature svg {
+            width: 20px; height: 20px; color: var(--color-accent);
+            flex-shrink: 0; margin-top: 2px;
+        }
+
+        /* ===== SERVICES ===== */
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        .service-card {
+            background: var(--color-surface); border-radius: var(--radius);
+            padding: 36px 28px; border: 1px solid var(--color-border);
+            transition: var(--transition); position: relative; overflow: hidden;
+        }
+        .service-card:hover {
+            transform: translateY(-4px); box-shadow: var(--shadow-lg);
+            border-color: var(--color-accent);
+        }
+        .service-icon {
+            width: 56px; height: 56px; border-radius: 14px;
+            background: var(--color-accent-light);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px;
+        }
+        .service-icon svg { width: 28px; height: 28px; color: var(--color-accent); }
+        .service-card h3 {
+            font-size: 1.15rem; font-weight: 600; margin-bottom: 10px;
+        }
+        .service-card p {
+            color: var(--color-text-secondary); font-size: 0.93rem; line-height: 1.7;
+        }
+
+        /* ===== PRICING ===== */
+        .pricing { background: var(--color-surface); }
+        .pricing-card {
+            max-width: 680px; margin: 0 auto;
+            background: linear-gradient(135deg, var(--color-accent-light), #fff);
+            border-radius: var(--radius); padding: 48px;
+            border: 2px solid var(--color-accent);
+            box-shadow: var(--shadow-lg); text-align: center;
+        }
+        .pricing-card h3 {
+            font-family: var(--font-serif); font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+        .pricing-card > p {
+            color: var(--color-text-secondary); margin-bottom: 36px;
+        }
+        .price-rows { text-align: left; margin-bottom: 32px; }
+        .price-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 16px 0; border-bottom: 1px solid var(--color-border);
+        }
+        .price-row:last-child { border-bottom: none; }
+        .price-label { font-size: 1rem; }
+        .price-value { font-weight: 700; font-size: 1.1rem; color: var(--color-accent-dark); }
+        .price-note {
+            background: var(--color-warm); padding: 16px 20px;
+            border-radius: var(--radius-sm); font-size: 0.9rem;
+            color: #5D4037; display: flex; align-items: center; gap: 10px;
+            margin-top: 24px; text-align: left;
+        }
+        .price-note svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--color-warm-accent); }
+
+        /* ===== AREA ===== */
+        .area-content {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+        }
+        .area-image { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+        .area-image img { width: 100%; height: 360px; object-fit: cover; display: block; }
+        .area-details { list-style: none; margin-top: 24px; }
+        .area-details li {
+            display: flex; align-items: center; gap: 12px;
+            padding: 10px 0; font-size: 1rem;
+        }
+        .area-details svg { width: 20px; height: 20px; color: var(--color-accent); flex-shrink: 0; }
+
+        /* ===== CTA ===== */
+        .cta {
+            background: linear-gradient(135deg, var(--color-accent-dark), var(--color-accent));
+            color: #fff; text-align: center; padding: 100px 0;
+        }
+        .cta h2 {
+            font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            margin-bottom: 16px;
+        }
+        .cta p { opacity: 0.9; font-size: 1.1rem; max-width: 520px; margin: 0 auto 36px; }
+        .cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .cta .btn-primary { background: #fff; color: var(--color-accent-dark); }
+        .cta .btn-outline { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1A2E1A; color: rgba(255,255,255,0.7); padding: 64px 0 32px;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px;
+            margin-bottom: 48px;
+        }
+        .footer-brand { font-family: var(--font-serif); font-size: 1.3rem; color: #fff; margin-bottom: 12px; }
+        .footer-desc { font-size: 0.93rem; line-height: 1.7; max-width: 360px; }
+        footer h4 { color: #fff; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.93rem; transition: var(--transition); }
+        .footer-links a:hover { color: #fff; }
+        .footer-contact li { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 0.93rem; }
+        .footer-contact svg { width: 18px; height: 18px; color: var(--color-accent-warm); flex-shrink: 0; }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.85rem; flex-wrap: wrap; gap: 12px;
+        }
+
+        /* ===== MOBILE ===== */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .nav-links.active {
+                display: flex; flex-direction: column; position: absolute;
+                top: 72px; left: 0; right: 0; background: var(--color-surface);
+                padding: 24px; gap: 16px; border-bottom: 1px solid var(--color-border);
+                box-shadow: var(--shadow);
+            }
+            .hero { min-height: 80vh; }
+            .hero-content { padding: 60px 0; }
+            .about-grid, .area-content { grid-template-columns: 1fr; }
+            .about-image { order: -1; }
+            .services-grid { grid-template-columns: 1fr; }
+            .pricing-card { padding: 32px 24px; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .trust-items { gap: 24px; }
+            section { padding: 72px 0; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0; transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="container">
+        <a href="#" class="nav-logo">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="36" height="36" rx="10" fill="#2E7D32"/>
+                <path d="M10 18.5C10 14 13.5 10 18 10s8 4 8 8.5c0 3-1.5 5.5-4 7v2.5a1 1 0 01-1 1h-6a1 1 0 01-1-1v-2.5c-2.5-1.5-4-4-4-7z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15 29h6M16 10V8M20 10V8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="18" cy="18" r="2" fill="#fff"/>
+            </svg>
+            Technikdoktor
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#services">Leistungen</a></li>
+            <li><a href="#about">Über mich</a></li>
+            <li><a href="#pricing">Preise</a></li>
+            <li><a href="#area">Servicegebiet</a></li>
+            <li><a href="#contact" class="nav-cta">Termin vereinbaren</a></li>
+        </ul>
+        <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')" aria-label="Menü öffnen">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M5 13l4 4L19 7"/></svg>
+                Seit 1998 – Ihr Technikexperte mit Hausbesuch
+            </div>
+            <h1>Technik-Probleme? Ich komme zu Ihnen nach Hause.</h1>
+            <p>Computer streikt, Handy spinnt oder WLAN funktioniert nicht? Kein Problem – ich helfe Ihnen persönlich vor Ort, verständlich und ohne Fachchinesisch.</p>
+            <div class="hero-buttons">
+                <a href="tel:+4368110580336" class="btn btn-primary">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    Jetzt anrufen
+                </a>
+                <a href="mailto:hilfe@technikdoktor.support" class="btn btn-outline">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M4 4h16c1.1 0 2 .9 2 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6c0-1.1.9-2 2-2z"/><path stroke-linecap="round" d="M22 6l-10 7L2 6"/></svg>
+                    E-Mail schreiben
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+    <div class="container">
+        <div class="trust-items">
+            <div class="trust-item">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Über 300 Aufträge seit Juli 2025
+            </div>
+            <div class="trust-item">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1"/></svg>
+                Direkt bei Ihnen zu Hause
+            </div>
+            <div class="trust-item">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                Verständlich & ohne Fachchinesisch
+            </div>
+            <div class="trust-item">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                Ganz Oberösterreich
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-image fade-in">
+                <img src="christian.jpg" alt="Christian Nouza – Technikdoktor">
+                <div class="about-image-badge">Seit 1998</div>
+            </div>
+            <div class="about-text fade-in">
+                <span class="section-label">Über mich</span>
+                <h2 class="section-title">Persönliche Technik-Hilfe mit Herz</h2>
+                <p class="section-subtitle">Seit 1998 helfe ich Menschen in Oberösterreich bei allen technischen Fragen – direkt bei Ihnen zu Hause. Seit Juli 2025 habe ich bereits über 300 Aufträge erfolgreich erledigt. Ob Computer, Smartphone, Netzwerk oder Smart-Home: Ich erkläre alles verständlich und nehme mir Zeit für Ihre Anliegen.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M5 13l4 4L19 7"/></svg>
+                        Persönlich & geduldig
+                    </div>
+                    <div class="about-feature">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M5 13l4 4L19 7"/></svg>
+                        Faire & transparente Preise
+                    </div>
+                    <div class="about-feature">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M5 13l4 4L19 7"/></svg>
+                        Hausbesuch ohne Aufpreis in Linz
+                    </div>
+                    <div class="about-feature">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M5 13l4 4L19 7"/></svg>
+                        Kostenlose Stornierung möglich
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-label">Leistungen</span>
+            <h2 class="section-title">Wobei kann ich Ihnen helfen?</h2>
+            <p class="section-subtitle">Von Smartphone bis Smart-Home – ich kümmere mich um Ihre gesamte Technik.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+                </div>
+                <h3>Smartphones & Tablets</h3>
+                <p>iPhone, Android, iPad – Einrichtung, Updates, Datentransfer, App-Hilfe und Fehlerbehebung.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8M12 17v4"/></svg>
+                </div>
+                <h3>PCs, Macs & Laptops</h3>
+                <p>Windows, macOS, Linux – Installation, Reparatur, Optimierung und Aufrüstung.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                </div>
+                <h3>Drucker & Scanner</h3>
+                <p>Einrichtung, Netzwerkfreigabe, Treiberinstallation und Problembehebung für alle Marken.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg>
+                </div>
+                <h3>Netzwerk & Internet</h3>
+                <p>Router-Konfiguration, WLAN-Optimierung, Heimnetzwerk-Einrichtung und Sicherheit.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><path d="M17 2l-5 5-5-5"/></svg>
+                </div>
+                <h3>TV & Unterhaltung</h3>
+                <p>Smart-TV, Receiver, Streaming-Dienste, DVD-Player – Einrichtung und Problemlösung.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                </div>
+                <h3>Backup & Cloud</h3>
+                <p>Datensicherung, Cloud-Services einrichten, Datenrettung und -migration.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                </div>
+                <h3>Digitalisierung</h3>
+                <p>Videorecorder, alte Medien digitalisieren, Fotos sichern und Kameras einrichten.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
+                </div>
+                <h3>Smart Home & Sicherheit</h3>
+                <p>Überwachungskameras, Smart-Home-Geräte, Kinderschutz und Sicherheitseinstellungen.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+                </div>
+                <h3>Beratung & Kaufhilfe</h3>
+                <p>Technische Beratung, Kaufempfehlungen und Hilfe bei Entscheidungen – neutral und herstellerunabhängig.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-label">Preise</span>
+            <h2 class="section-title">Transparent & fair</h2>
+            <p class="section-subtitle">Keine versteckten Kosten – Sie wissen immer, was auf Sie zukommt.</p>
+        </div>
+        <div class="pricing-card fade-in">
+            <h3>Mein Hausbesuch-Tarif</h3>
+            <p>Einfach, verständlich, fair.</p>
+            <div class="price-rows">
+                <div class="price-row">
+                    <span class="price-label">Mindestverrechnungsdauer</span>
+                    <span class="price-value">38 &euro;</span>
+                </div>
+                <div class="price-row">
+                    <span class="price-label">Jede weitere angef. Viertelstunde</span>
+                    <span class="price-value">19 &euro;</span>
+                </div>
+                <div class="price-row">
+                    <span class="price-label">Anfahrt innerhalb Linz (4020)</span>
+                    <span class="price-value" style="color: var(--color-accent);">Kostenlos</span>
+                </div>
+                <div class="price-row">
+                    <span class="price-label">Anfahrt außerhalb</span>
+                    <span class="price-value">5 &euro; / angef. 5 km</span>
+                </div>
+            </div>
+            <a href="tel:+4368110580336" class="btn btn-green" style="width: 100%; justify-content: center;">
+                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                Jetzt Termin vereinbaren
+            </a>
+            <div class="price-note">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Kostenlose Stornierung bis 3 Stunden vor dem Termin. Gem. § 6 Abs. 1 Z 27 UStG wird keine Umsatzsteuer berechnet (Kleinunternehmerregelung).
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section id="area">
+    <div class="container">
+        <div class="area-content">
+            <div class="fade-in">
+                <span class="section-label">Servicegebiet</span>
+                <h2 class="section-title">Ich komme zu Ihnen – in ganz Oberösterreich</h2>
+                <p class="section-subtitle">Mein Hausbesuchservice deckt ganz Oberösterreich flächendeckend ab. In Linz (4020) ist die Anfahrt kostenlos.</p>
+                <ul class="area-details">
+                    <li>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M5 13l4 4L19 7"/></svg>
+                        Linz & Umgebung – kostenlose Anfahrt
+                    </li>
+                    <li>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M5 13l4 4L19 7"/></svg>
+                        Ganz Oberösterreich flächendeckend
+                    </li>
+                    <li>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M5 13l4 4L19 7"/></svg>
+                        Andere Bundesländer auf Anfrage
+                    </li>
+                    <li>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M5 13l4 4L19 7"/></svg>
+                        Faire Anfahrtspauschale: 5 € / 5 km
+                    </li>
+                </ul>
+            </div>
+            <div class="area-image fade-in">
+                <img src="https://images.unsplash.com/photo-1609180051907-7ee8fa505975?w=600&q=80" alt="Oberösterreich Landschaft">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+    <div class="container fade-in">
+        <h2>Technik-Problem? Ich bin für Sie da!</h2>
+        <p>Rufen Sie mich an oder schreiben Sie mir eine E-Mail – ich melde mich schnellstmöglich bei Ihnen.</p>
+        <div class="cta-buttons">
+            <a href="tel:+4368110580336" class="btn btn-primary">
+                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                +43 681 10580336
+            </a>
+            <a href="mailto:hilfe@technikdoktor.support" class="btn btn-outline">
+                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M4 4h16c1.1 0 2 .9 2 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6c0-1.1.9-2 2-2z"/><path stroke-linecap="round" d="M22 6l-10 7L2 6"/></svg>
+                hilfe@technikdoktor.support
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">Technikdoktor</div>
+                <p class="footer-desc">Ihr mobiler IT-Hausbesuchservice seit 1998. Persönlich, verständlich, zuverlässig – direkt bei Ihnen zu Hause in Oberösterreich.</p>
+            </div>
+            <div>
+                <h4>Rechtliches</h4>
+                <ul class="footer-links">
+                    <li><a href="impressum.html">Impressum</a></li>
+                    <li><a href="agb.html">AGB</a></li>
+                    <li><a href="datenschutz.html">Datenschutz</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Kontakt</h4>
+                <ul class="footer-contact footer-links">
+                    <li>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        <a href="tel:+4368110580336">+43 681 10580336</a>
+                    </li>
+                    <li>
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M4 4h16c1.1 0 2 .9 2 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6c0-1.1.9-2 2-2z"/><path stroke-linecap="round" d="M22 6l-10 7L2 6"/></svg>
+                        <a href="mailto:hilfe@technikdoktor.support">hilfe@technikdoktor.support</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 LinguaFlow e.U. – Technikdoktor. Alle Rechte vorbehalten.</span>
+            <span>Linzer Straße 17, 4100 Ottensheim</span>
+        </div>
+    </div>
+</footer>
+
+<!-- SCROLL ANIMATIONS -->
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
