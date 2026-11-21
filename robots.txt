@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://technikdoktor.support/sitemap.xml
+Sitemap: https://technikkenner.at/sitemap.xml
