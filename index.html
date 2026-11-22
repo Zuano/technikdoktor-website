@@ -256,6 +256,9 @@
             color: var(--color-accent-dark); font-weight: 600; font-size: 0.93rem;
         }
         .service-link:hover { color: var(--color-accent); }
+        /* Make the whole card clickable / Ganze Karte anklickbar machen */
+        .service-link::after { content: ""; position: absolute; inset: 0; }
+        .service-card:has(.service-link:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: 2px; }
 
         /* ===== PRICING ===== */
         .pricing { background: var(--color-surface); }
